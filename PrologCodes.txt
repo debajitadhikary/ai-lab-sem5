@@ -1,0 +1,84 @@
+---------FOOD-----------
+
+food(burger).
+food(sandwich).
+food(pizza).
+lunch(sandwich).
+dinner(pizza).
+meal(X):-food(X).
+
+
+
+-----StudentTeacher-----
+
+studies(charlie,csc135).
+studies(olivia,csc135).
+studies(jack,csc131).
+studies(arthur,csc134).
+
+teaches(kirke,csc135).
+teaches(collins,csc131).
+teaches(collins,csc171).
+teaches(juniper,csc134).
+
+professor(X,Y):-teaches(X,C),studies(Y,C).
+
+
+
+----------CAR-----------
+
+owns(jack, car(bmw)).
+owns(john, car(chevy)).
+owns(olivia, car(civic)).
+owns(jane, car(chevy)).
+
+sedan(car(bmw)).
+sedan(car(civic)).
+truck(car(chevy)).
+
+
+
+
+--------Pet&Love---------
+
+cat(fubby).
+black_spots(fubby).
+dog(figaro).
+white_spots(figaro).
+
+owns(mary, Pet):- cat(Pet), black_spots(Pet).
+loves(Who, What):-owns(Who, What).
+
+
+
+
+---------Family----------
+
+male(john).
+male(bob).
+male(jim).
+female(lisa).
+female(susan).
+female(anne).
+
+parent(john, bob).
+parent(john, jim).
+parent(lisa, bob).
+parent(lisa, jim).
+parent(bob, susan).
+parent(anne, susan).
+
+father(X, Y):-male(X), parent(X, Y).
+mother(X, Y):-female(x), parent(X, Y).
+sibling(X, Y):-parent(Z, X), parent(Z, Y), X\=Y.
+
+-----------Tower of Hanoi--------------
+move(1,X,Y,_) :-
+   write('Move top disk from '), write(X), write(' to '), write(Y), nl.
+move(N,X,Y,Z) :-
+   N>1,
+   M is N-1,
+   move(M,X,Z,Y),
+   move(1,X,Y,_),
+   move(M,Z,Y,X).
+
